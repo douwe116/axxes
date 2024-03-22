@@ -9,7 +9,7 @@ class GildedTros {
 
     public void updateInventory() {
         for (Item item: items) {
-            InventoryItem inventoryItem = new InventoryItem(item);
+            InventoryItem inventoryItem = InventoryItem.create(item);
             inventoryItem.updateQuality();
             inventoryItem.updateExpiration();
             inventoryItem.processExpiration();
