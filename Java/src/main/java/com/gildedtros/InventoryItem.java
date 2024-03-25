@@ -19,6 +19,9 @@ public class InventoryItem {
         if (item.name.equals(KeyChainInventoryItem.NAME)) {
             return new KeyChainInventoryItem(item);
         }
+        if (Arrays.stream(SmellyInventoryItems.NAMES).anyMatch(item.name::equals)) {
+            return new SmellyInventoryItems(item);
+        }
         return new InventoryItem(item);
     }
 

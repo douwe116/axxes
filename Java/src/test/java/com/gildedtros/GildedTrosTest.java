@@ -87,5 +87,23 @@ class GildedTrosTest {
         assertEquals(-1, app.items[0].sellIn);
         assertEquals(0, app.items[0].quality);
     }
+    @Test
+    void SmellyItems() {
+        Item[] items = new Item[] { new Item("Duplicate Code", 5, 10) };
+        GildedTros app = new GildedTros(items);
+        app.updateInventory();
+        assertEquals("Duplicate Code", app.items[0].name);
+        assertEquals(4, app.items[0].sellIn);
+        assertEquals(8, app.items[0].quality);
+    }
+    @Test
+    void SmellyItemsPastSellInDays() {
+        Item[] items = new Item[] { new Item("Duplicate Code", -1, 10) };
+        GildedTros app = new GildedTros(items);
+        app.updateInventory();
+        assertEquals("Duplicate Code", app.items[0].name);
+        assertEquals(-2, app.items[0].sellIn);
+        assertEquals(6, app.items[0].quality);
+    }
 
 }
